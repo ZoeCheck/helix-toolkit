@@ -1,8 +1,12 @@
 ﻿<Window x:Class="ModelViewer.Window1"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:helix="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
-        xmlns:modelViewer="clr-namespace:ModelViewer" Title="{Binding ApplicationTitle}" Height="480" Width="640" Background="Black">
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:helix="clr-namespace:HelixToolkit.Wpf;assembly=HelixToolkit.Wpf"
+        xmlns:modelViewer="clr-namespace:ModelViewer"
+        Title="{Binding ApplicationTitle}"
+        Height="480"
+        Width="640"
+        Background="Black">
     <Window.Resources>
         <!--   <HierarchicalDataTemplate DataType = "{x:Type media3d:ModelVisual3D}" ItemsSource = "{Binding Children}">
             <StackPanel Orientation="Horizontal">
@@ -25,12 +29,19 @@
             </StackPanel>
 
         </HierarchicalDataTemplate>-->
-        <HierarchicalDataTemplate DataType = "{x:Type modelViewer:VisualViewModel}" ItemsSource = "{Binding Children}">
+        <HierarchicalDataTemplate DataType="{x:Type modelViewer:VisualViewModel}"
+                                  ItemsSource="{Binding Children}">
             <StackPanel Orientation="Vertical">
                 <StackPanel Orientation="Horizontal">
-                    <Ellipse Width="8" Height="8" Margin="4" Fill="{Binding Brush}" Stroke="Black"/>
-                    <TextBlock Text="{Binding TypeName}" FontWeight="Bold"/>
-                    <TextBlock Text="{Binding Name}" Padding="8 0 0 0"/>
+                    <Ellipse Width="8"
+                             Height="8"
+                             Margin="4"
+                             Fill="{Binding Brush}"
+                             Stroke="Black" />
+                    <TextBlock Text="{Binding TypeName}"
+                               FontWeight="Bold" />
+                    <TextBlock Text="{Binding Name}"
+                               Padding="8 0 0 0" />
                 </StackPanel>
             </StackPanel>
         </HierarchicalDataTemplate>
@@ -60,41 +71,55 @@
     <DockPanel>
         <Menu DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Open..." Command="{Binding FileOpenCommand}"/>
-                <MenuItem Header="_Export..." Command="{Binding FileExportCommand}"/>
-                <Separator/>
-                <MenuItem Header="E_xit" Command="{Binding FileExitCommand}"/>
+                <!--<MenuItem Header="_Open..."
+                          Command="{Binding FileOpenCommand}" />-->
+                <MenuItem Header="_Open..."
+                          Click="MenuItemOpen_Click" />
+                <MenuItem Header="_Export..."
+                          Command="{Binding FileExportCommand}" />
+                <Separator />
+                <MenuItem Header="E_xit"
+                          Command="{Binding FileExitCommand}" />
             </MenuItem>
             <MenuItem Header="_Edit">
-                <MenuItem Header="_Copy XAML" Command="{Binding EditCopyXamlCommand}"/>
+                <MenuItem Header="_Copy XAML"
+                          Command="{Binding EditCopyXamlCommand}" />
             </MenuItem>
             <MenuItem Header="_View">
-                <MenuItem Header="_Zoom extents" Command="{Binding ViewZoomExtentsCommand}"/>
+                <MenuItem Header="_Zoom extents"
+                          Command="{Binding ViewZoomExtentsCommand}" />
             </MenuItem>
             <MenuItem Header="_Help">
-                <MenuItem Header="_About" Command="{Binding HelpAboutCommand}"/>
+                <MenuItem Header="_About"
+                          Command="{Binding HelpAboutCommand}" />
             </MenuItem>
         </Menu>
 
-        <DockPanel DockPanel.Dock="Left" Width="400" >
-            <Slider Value="{Binding Expansion}" Minimum="1" Maximum="2" DockPanel.Dock="Bottom"/>
-            <TextBox DockPanel.Dock="Bottom" Height="200" Text="{Binding Info}"/>
+        <DockPanel DockPanel.Dock="Left"
+                   Visibility="Collapsed"
+                   Width="400">
+            <Slider Value="{Binding Expansion}"
+                    Minimum="1"
+                    Maximum="2"
+                    DockPanel.Dock="Bottom" />
+            <TextBox DockPanel.Dock="Bottom"
+                     Height="200"
+                     Text="{Binding Info}" />
             <TreeView ItemsSource="{Binding Elements}">
             </TreeView>
         </DockPanel>
 
-        <helix:HelixViewport3D x:Name="view1" CameraRotationMode="Trackball" ModelUpDirection="0,1,0">
+        <StackPanel x:Name="rootSP"
+                    Orientation="Vertical"
+                    VerticalAlignment="Stretch"
+                    HorizontalAlignment="Stretch"></StackPanel>
+        <!--<helix:HelixViewport3D x:Name="view1"
+                               CameraRotationMode="Trackball"
+                               ModelUpDirection="0,1,0">
             <ModelVisual3D x:Name="root1">
-                <!--<helix:CubeVisual3D Fill="Red"/> 
-                <helix:GridLinesVisual3D/>-->
-                <helix:DefaultLights/>
-                <ModelVisual3D Content="{Binding CurrentModel}"/>
-                <!--<helix:FileModelVisual3D Source="{Binding CurrentModelPath, Mode=TwoWay}" ModelLoaded="ModelLoaded"/>-->
-                <!--<helix:Expander3D Expansion="{Binding Expansion}" Content="{Binding CurrentModel}"/>-->
-                <!-- <helix:HelixViewport3D.Triggers>
-                <EventTrigger 
-            </helix:HelixViewport3D.Triggers>-->
+                <helix:DefaultLights />
+                <ModelVisual3D Content="{Binding CurrentModel}" />
             </ModelVisual3D>
-        </helix:HelixViewport3D>
+        </helix:HelixViewport3D>-->
     </DockPanel>
 </Window>
