@@ -10,8 +10,10 @@
 using HelixToolkit.Wpf;
 using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Media.Media3D;
 namespace ModelViewer
 {
@@ -58,6 +60,7 @@ namespace ModelViewer
 
         private async void MenuItemOpen_Click(object sender, System.Windows.RoutedEventArgs e)
         {
+            rootSP.Children.Clear();
             string[] files = OpenDialog();
             if (files != null)
             {
@@ -67,13 +70,12 @@ namespace ModelViewer
                     {
                         Model3D model = await this.LoadAsync(item, false);
 
-                        //this.Dispatcher.Invoke(new Action(() =>
-                        //{
                         HelixViewport3D viewPort = new HelixViewport3D();
                         viewPort.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
-                        viewPort.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+                        viewPort.Height = 300;
                         viewPort.CameraRotationMode = CameraRotationMode.Trackball;
                         viewPort.ModelUpDirection = new Vector3D(0, 1, 0);
+                        viewPort.ShowFrameRate = true;
 
                         ModelVisual3D visual3D = new ModelVisual3D();
                         viewPort.Children.Add(visual3D);
@@ -81,12 +83,7 @@ namespace ModelViewer
                         DefaultLights deLight = new DefaultLights();
                         visual3D.Children.Add(deLight);
 
-                      
-                        viewPort.ZoomExtents(0);
-
                         rootSP.Children.Add(viewPort);
-
-                        //}));
                     }
                 }
             }
@@ -107,6 +104,11 @@ namespace ModelViewer
                 // Alt. 2 - create the model on the UI dispatcher
                 return mi.Load(model3DPath, this.Dispatcher);
             });
+        }
+
+        private void MenuItem_Click(object sender, System.Windows.RoutedEventArgs e)
+        {
+            MessageBox.Show("3D性能测试程序", "关于", MessageBoxButton.OK, MessageBoxImage.Information);
         }
     }
 }

@@ -73,25 +73,12 @@
             <MenuItem Header="_File">
                 <!--<MenuItem Header="_Open..."
                           Command="{Binding FileOpenCommand}" />-->
-                <MenuItem Header="_Open..."
+                <MenuItem Header="打开文件..."
                           Click="MenuItemOpen_Click" />
-                <MenuItem Header="_Export..."
-                          Command="{Binding FileExportCommand}" />
-                <Separator />
-                <MenuItem Header="E_xit"
-                          Command="{Binding FileExitCommand}" />
-            </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Header="_Copy XAML"
-                          Command="{Binding EditCopyXamlCommand}" />
-            </MenuItem>
-            <MenuItem Header="_View">
-                <MenuItem Header="_Zoom extents"
-                          Command="{Binding ViewZoomExtentsCommand}" />
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About"
-                          Command="{Binding HelpAboutCommand}" />
+                          Click="MenuItem_Click"/>
             </MenuItem>
         </Menu>
 
@@ -109,17 +96,11 @@
             </TreeView>
         </DockPanel>
 
-        <StackPanel x:Name="rootSP"
-                    Orientation="Vertical"
-                    VerticalAlignment="Stretch"
-                    HorizontalAlignment="Stretch"></StackPanel>
-        <!--<helix:HelixViewport3D x:Name="view1"
-                               CameraRotationMode="Trackball"
-                               ModelUpDirection="0,1,0">
-            <ModelVisual3D x:Name="root1">
-                <helix:DefaultLights />
-                <ModelVisual3D Content="{Binding CurrentModel}" />
-            </ModelVisual3D>
-        </helix:HelixViewport3D>-->
+        <ScrollViewer>
+            <StackPanel x:Name="rootSP"
+                        Orientation="Vertical"
+                        VerticalAlignment="Stretch"
+                        HorizontalAlignment="Stretch"></StackPanel>
+        </ScrollViewer>
     </DockPanel>
 </Window>

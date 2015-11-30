@@ -3297,6 +3297,8 @@ namespace HelixToolkit.Wpf
             // add the default headlight
             this.OnHeadlightChanged();
             base.OnApplyTemplate();
+
+            this.ZoomExtents(0);
         }
 
         /// <summary>
