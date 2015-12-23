@@ -2157,22 +2157,22 @@ namespace HelixToolkit.Wpf
 
             if (!shift)
             {
-                //原地旋转
+                //todo 原地旋转
                 switch (e.Key)
                 {
-                    case Key.Left://左旋转
+                    case Key.Left://todo 左旋转
                         this.AddRotateForce(-1 * f * this.LeftRightRotationSensitivity, 0);
                         e.Handled = true;
                         break;
-                    case Key.Right://右旋转
+                    case Key.Right://todo 右旋转
                         this.AddRotateForce(1 * f * this.LeftRightRotationSensitivity, 0);
                         e.Handled = true;
                         break;
-                    case Key.Up://上旋转
+                    case Key.Up://todo 上旋转
                         this.AddRotateForce(0, -1 * f * this.UpDownRotationSensitivity);
                         e.Handled = true;
                         break;
-                    case Key.Down://右旋转
+                    case Key.Down://todo 右旋转
                         this.AddRotateForce(0, 1 * f * this.UpDownRotationSensitivity);
                         e.Handled = true;
                         break;
@@ -2180,22 +2180,22 @@ namespace HelixToolkit.Wpf
             }
             else
             {
-                //移动
+                //todo 移动
                 switch (e.Key)
                 {
-                    case Key.Left://模型左移(相机右移)
+                    case Key.Left://todo 模型左移(相机右移)
                         this.AddPanForce(-5 * f * this.LeftRightPanSensitivity, 0);
                         e.Handled = true;
                         break;
-                    case Key.Right://模型友移(相机左移)
+                    case Key.Right://todo 模型友移(相机左移)
                         this.AddPanForce(5 * f * this.LeftRightPanSensitivity, 0);
                         e.Handled = true;
                         break;
-                    case Key.Up://模型上移(相机下移)
+                    case Key.Up://todo 模型上移(相机下移)
                         this.AddPanForce(0, -5 * f * this.UpDownPanSensitivity);
                         e.Handled = true;
                         break;
-                    case Key.Down://模型下移(相机上移)
+                    case Key.Down://todo 模型下移(相机上移)
                         this.AddPanForce(0, 5 * f * this.UpDownPanSensitivity);
                         e.Handled = true;
                         break;
@@ -2204,15 +2204,15 @@ namespace HelixToolkit.Wpf
             //缩放
             switch (e.Key)
             {
-                case Key.PageUp://放大
+                case Key.PageUp://todo 放大
                     this.AddZoomForce(-0.1 * f * this.PageUpDownZoomSensitivity);
                     e.Handled = true;
                     break;
-                case Key.PageDown://缩小
+                case Key.PageDown://todo 缩小
                     this.AddZoomForce(0.1 * f * this.PageUpDownZoomSensitivity);
                     e.Handled = true;
                     break;
-                case Key.Back://还原上一步
+                case Key.Back://todo 还原上一步
                     if (this.RestoreCameraSetting())
                     {
                         e.Handled = true;
@@ -2223,22 +2223,22 @@ namespace HelixToolkit.Wpf
             //相机移动
             switch (e.Key)
             {
-                case Key.W://相机前移
+                case Key.W://todo 相机前移
                     this.AddMoveForce(0, 0, 0.1 * f * this.MoveSensitivity);
                     break;
-                case Key.A://相机左移
+                case Key.A://todo 相机左移
                     this.AddMoveForce(-0.1 * f * this.LeftRightPanSensitivity, 0, 0);
                     break;
-                case Key.S://相机后移
+                case Key.S://todo 相机后移
                     this.AddMoveForce(0, 0, -0.1 * f * this.MoveSensitivity);
                     break;
-                case Key.D://相机右移
+                case Key.D://todo 相机右移
                     this.AddMoveForce(0.1 * f * this.LeftRightPanSensitivity, 0, 0);
                     break;
-                case Key.Z://相机下移
+                case Key.Z://todo 相机下移
                     this.AddMoveForce(0, -0.1 * f * this.LeftRightPanSensitivity, 0);
                     break;
-                case Key.Q://相机上移
+                case Key.Q://todo 相机上移
                     this.AddMoveForce(0, 0.1 * f * this.LeftRightPanSensitivity, 0);
                     break;
             }

@@ -279,6 +279,7 @@ namespace HelixToolkit.Wpf
         /// <param name="e">The <see cref="ManipulationEventArgs"/> instance containing the event data.</param>
         public override void Started(ManipulationEventArgs e)
         {
+            //todo 鼠标右键操作
             base.Started(e);
 
             this.rotationPoint = new Point(
