@@ -60,7 +60,6 @@ namespace ModelViewer
 
         private async void MenuItemOpen_Click(object sender, System.Windows.RoutedEventArgs e)
         {
-            rootSP.Children.Clear();
             string[] files = OpenDialog();
             if (files != null)
             {
@@ -70,20 +69,21 @@ namespace ModelViewer
                     {
                         Model3D model = await this.LoadAsync(item, false);
 
-                        HelixViewport3D viewPort = new HelixViewport3D();
-                        viewPort.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
-                        viewPort.Height = 300;
-                        viewPort.CameraRotationMode = CameraRotationMode.Trackball;
-                        viewPort.ModelUpDirection = new Vector3D(0, 1, 0);
-                        viewPort.ShowFrameRate = true;
+                        //HelixViewport3D viewPort = new HelixViewport3D();
+                        //viewPort.HorizontalAlignment = System.Windows.HorizontalAlignment.Stretch;
+                        //viewPort.VerticalAlignment = System.Windows.VerticalAlignment.Stretch;
+                        ////viewPort.Height = 300;
+                        ////viewPort.CameraRotationMode = CameraRotationMode.Trackball;
+                        //viewPort.ModelUpDirection = new Vector3D(0, 1, 0);
+                        //viewPort.ShowFrameRate = true;
 
-                        ModelVisual3D visual3D = new ModelVisual3D();
-                        viewPort.Children.Add(visual3D);
-                        visual3D.Content = model;
-                        DefaultLights deLight = new DefaultLights();
-                        visual3D.Children.Add(deLight);
-
-                        rootSP.Children.Add(viewPort);
+                        //ModelVisual3D visual3D = new ModelVisual3D();
+                        //visual3D.Content = model;
+                        //DefaultLights deLight = new DefaultLights();
+                        ////deLight.Children.Add();
+                        //visual3D.Children.Add(deLight);
+                        _Items.Content = model;
+                        _Viewport3DMain.ZoomExtents(500);
                     }
                 }
             }

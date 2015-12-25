@@ -78,7 +78,7 @@
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About"
-                          Click="MenuItem_Click"/>
+                          Click="MenuItem_Click" />
             </MenuItem>
         </Menu>
 
@@ -96,11 +96,28 @@
             </TreeView>
         </DockPanel>
 
-        <ScrollViewer>
+        <!--<ScrollViewer>
             <StackPanel x:Name="rootSP"
                         Orientation="Vertical"
                         VerticalAlignment="Stretch"
                         HorizontalAlignment="Stretch"></StackPanel>
-        </ScrollViewer>
+        </ScrollViewer>-->
+        <helix:HelixViewport3D x:Name="_Viewport3DMain"
+                               CameraRotationMode="Trackball"
+                               ModelUpDirection="0,1,0">
+            <ModelVisual3D x:Name="root1">
+                <helix:DefaultLights />
+                <ModelVisual3D>
+                    <ModelVisual3D.Content>
+                        <Model3DGroup>
+                            <Model3DGroup.Children>
+                                <AmbientLight Color="#101010" />
+                            </Model3DGroup.Children>
+                        </Model3DGroup>
+                    </ModelVisual3D.Content>
+                </ModelVisual3D>
+                <ModelVisual3D x:Name="_Items" />
+            </ModelVisual3D>
+        </helix:HelixViewport3D>
     </DockPanel>
 </Window>
